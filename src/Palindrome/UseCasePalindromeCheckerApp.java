@@ -1,6 +1,4 @@
 package Palindrome;
-import java.util.Queue;
-import java.util.LinkedList;
 import java.util.Stack;
 
 public class UseCasePalindromeCheckerApp {
@@ -8,24 +6,21 @@ public class UseCasePalindromeCheckerApp {
     public static void main(String[] args) {
 
         // Hardcoded string
-        String word = "madam";
+        String word = "level";
 
-        // Create Queue and Stack
-        Queue<Character> queue = new LinkedList<>();
+        // Create stack
         Stack<Character> stack = new Stack<>();
 
-        // Insert characters into both structures
+        // Push all characters into stack
         for (int i = 0; i < word.length(); i++) {
-            char ch = word.charAt(i);
-            queue.add(ch);   // Enqueue (FIFO)
-            stack.push(ch);  // Push (LIFO)
+            stack.push(word.charAt(i));
         }
 
         boolean isPalindrome = true;
 
-        // Compare dequeue vs pop
-        while (!queue.isEmpty()) {
-            if (queue.remove() != stack.pop()) {
+        // Pop characters and compare
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
